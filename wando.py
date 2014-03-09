@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*- 
+from __future__ import unicode_literals
 import werkzeug._internal
 
 
@@ -25,7 +27,7 @@ werkzeug._internal._log = _color_log
 _log = _color_log
 
 
-from werkzeug.serving import run_simple, WSGIRequestHandler
+from werkzeug.serving import run_simple as werkzeug_run, WSGIRequestHandler
 from blessings import Terminal
 from datetime import datetime
 from colorama import init
@@ -51,7 +53,7 @@ class ColoredLogsRequestHandler(WSGIRequestHandler):
 
     def log_request(self, code=None, size=None):
         code_output = self.get_colored_http_code(code) if code else term.bold_white('???')
-        message = '%s - %s' % (code_output, term.yellow(self.requestline))
+        message = '{0} - {1}'.format(code_output, term.yellow(self.requestline))
 
         if size:
             message += size
@@ -59,7 +61,7 @@ class ColoredLogsRequestHandler(WSGIRequestHandler):
         time = term.cyan(self.log_date_time_string())
         address = term.green(self.address_string())
 
-        _log('info', '%s | %s → %s\n' % (time, address, message))
+        _log('info', '{0} | {1} → {2}\n'.format(time, address, message))
 
     def log_error(self, *args):
         _log('error', *args)
@@ -70,21 +72,21 @@ class ColoredLogsRequestHandler(WSGIRequestHandler):
     def log_message(self, format, *args):
         _log('info', format, *args)
 
-def run(hostname, port, application, use_reloader=False,
+def run_simple(hostname, port, application, use_reloader=True,
         use_evalex=True,
         extra_files=None, reloader_interval=1, threaded=False,
         processes=1, static_files=None,
         passthrough_errors=False, ssl_context=None):
 
-    run_simple(hostname, port, application,
-               request_handler=ColoredLogsRequestHandler, 
-               passthrough_errors=passthrough_errors, 
-               reloader_interval=reloader_interval, 
-               static_files=static_files,
-               use_reloader=use_reloader,
-               extra_files=extra_files, 
-               ssl_context=ssl_context,
-               use_evalex=use_evalex,
-               processes=processes, 
-               threaded=threaded,
-               use_debugger=True)
+    werkzeug_run(hostname, port, application,
+                 request_handler=ColoredLogsRequestHandler, 
+                 passthrough_errors=passthrough_errors, 
+                 reloader_interval=reloader_interval, 
+                 static_files=static_files,
+                 use_reloader=use_reloader,
+                 extra_files=extra_files, 
+                 ssl_context=ssl_context,
+                 use_evalex=use_evalex,
+                 processes=processes, 
+                 threaded=threaded,
+                 use_debugger=True)

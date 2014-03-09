@@ -2,6 +2,7 @@
 
 #virtualenv
 .term/
+.term2/
 .env
 
 # C extensions
