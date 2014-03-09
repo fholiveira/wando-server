@@ -11,7 +11,7 @@ It exposes the same api of "run_simple" method from `werkzeug.serving <http://we
     from wando import run_simple
     from my_app import app
 
-    run_simple(app, 'localhost', 5000)
+    run_simple('localhost', 5000, app)
 
 If you using Flask, for example, you can just do::
 

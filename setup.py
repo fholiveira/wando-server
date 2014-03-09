@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='wando-server',
-    version='0.2.0',
+    version='0.2.1',
     url='https://github.com/fholiveira/wando-server',
     license='BSD',
     author='Fernando Oliveira',
