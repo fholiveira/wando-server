@@ -1,5 +1,9 @@
 *.py[cod]
 
+#virtualenv
+.term/
+.env
+
 # C extensions
 *.so
 
