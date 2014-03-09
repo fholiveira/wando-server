@@ -1,13 +1,13 @@
 from setuptools import setup
 
 setup(
-    name='wando',
-    version='0.1.1',
-    url='http://packages.python.org/flask-environments/',
+    name='wando-server',
+    version='0.1.0',
+    url='https://github.com/fholiveira/wando-server',
     license='BSD',
     author='Fernando Oliveira',
     author_email='fernando@fholiveira.com',
-    description='Environment tools and configuration for Flask applications',
+    description='A beautiful web server for development',
     long_description=open('README.rst').read(),
     py_modules=['wando'],
     zip_safe=False,

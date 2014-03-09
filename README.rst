@@ -3,7 +3,7 @@ Wando Server
 ============
 
 Wando Server is a beautiful web server for development - it is not intended to be a production server. 
-This server is a extension to the really good dev server of `Werkzeug Project<http://werkzeug.pocoo.org>`_. Basically it prints more readable logs to the terminal.
+This server is a extension to the really good dev server of `Werkzeug Project <http://werkzeug.pocoo.org>`_. Basically it prints more readable logs to the terminal.
 
 It exposes the same api of "run_simple" method from `werkzeug.serving <http://werkzeug.pocoo.org/docs/serving>`_. You can run the server with this simple code::
 
